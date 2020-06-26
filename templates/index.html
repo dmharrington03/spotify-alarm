@@ -1,0 +1,68 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/newmaterialize.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script defer src="/static/materialize.js"></script>
+    <title>Current Song</title>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-wrapper blue-grey">
+            <div class="brand-logo">&nbsp;Here's what i'm listening to:</div>
+        </div>
+    </nav>
+    
+    <br>
+
+    <div class="row">
+        {% if title != None %}
+            <div class="col s4">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="{{ img_url }}" alt="Album Cover">
+                    </div>
+                    <div class="card-content">
+                        <p><b>{{ title }}</b> by {{ artist }}</p>
+                        <br>
+                        <p>Now playing on {{ device }}</p>
+                    </div>
+                </div>
+            </div>
+            <br> 
+        {% else %}
+            <div class="col s3">
+                <p>No songs currently playing</p>
+            </div>
+        {% endif %}
+
+        <div class="col s4">
+            {% if delay %}
+                <div class="card blue-grey">
+                    <p class="card-content white-text">Alarm set for {{ delay }} minute(s)</p>
+                </div>
+            {% endif %}
+
+            <form action="/" method="POST">
+                <p>Set a timer to pause:</p>
+                    <div class="input-field">
+                        {{ form.mins }}
+                        <label for="mins">{{ form.mins.label }}</label>
+                    </div>
+                    {% if form.mins.errors %}
+                        <div class="card red lighten-2"><p class="card-content">{{ form.mins.errors[0] }}</p></div>
+                    {% endif %}
+                <button class="btn waves-effect waves-light blue-grey" type="submit" name="action" id="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>
