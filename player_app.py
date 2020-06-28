@@ -8,7 +8,6 @@ import threading
 import sched
 import time
 
-
 # Auth for spotify
 scope = "user-read-playback-state,user-modify-playback-state"
 username = input("Username: ")
@@ -36,13 +35,11 @@ def index():
     form = MyForm()
     data = {}
 
-    form.validate_on_submit()
-
-    #TODO Fix validation and display message
     if form.validate_on_submit(): 
         delayMin = int(request.form['mins'])
         pause_after(delayMin)
         data.setdefault("delay", delayMin)
+
 
     if sp.current_user_playing_track():
         data.update({"title": sp.current_user_playing_track()['item']['name'],

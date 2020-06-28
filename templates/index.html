@@ -50,6 +50,7 @@
             {% endif %}
 
             <form action="/" method="POST">
+              {{ form.csrf_token }}
                 <p>Set a timer to pause:</p>
                     <div class="input-field">
                         {{ form.mins }}
