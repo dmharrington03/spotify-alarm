@@ -29,7 +29,6 @@ class MyForm(FlaskForm):
         validators=[Regexp(r'[1-9]+', message=("Must be only numbers (at least one)"))])
 
 
-
 @app.route('/', methods=["GET", "POST"])
 def index():
     form = MyForm()
