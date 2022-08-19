@@ -13,3 +13,6 @@ Set environment variables for `SPOTIPY_CLIENT_ID`, `SPOTIPY_CLIENT_SECRET`, and 
 - Flask, flask-wtf, and wt-forms
 - Materialize
 
+## Screenshots
+---
+<img src="./screenshot1.png" alt="landing page">
